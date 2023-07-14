@@ -1,8 +1,18 @@
-import { createSignal } from 'solid-js'
+import { createEffect, createResource, createSignal } from 'solid-js'
+import Navbar from './components/common/Navbar'
+import Footer from './components/common/Footer'
+import { SwiperPart } from './components/SwiperPart'
+import { getPopularMovies, getPopularPeople, getPopularSeries } from './utils/tmdb'
+
 
 
 function App() {
 
+  
+
+  const [popularMovies] = createResource(() => getPopularMovies())
+  const [popularPeoples] = createResource(() => getPopularPeople())
+  const [popularSeries] = createResource(() => getPopularSeries())
   return (
     <>
     <div className=" min-h-screen flex flex-col">
