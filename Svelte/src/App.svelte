@@ -10,6 +10,6 @@
 
     <div>
         
-        <Route path="/"><Home /></Route>
+        <Route path=""><Home /></Route>
       </div>
 </Router>
