@@ -1,4 +1,5 @@
 <script>
+  import Home from "./views/Home.svelte";
       import { Router, Link, Route } from "svelte-routing";
 
  

@@ -11,10 +11,10 @@ const Navbar = () =>{
         <li><A href={'/detail/movies'}>Movies</A></li>
 
         <li><A href={'/detail/series'}>Series</A></li>
-        <li><A href={'/detail/achrefrs'}>Achrefrs</A></li>
+        <li><A href={'/detail/achrefrs'}>Actors</A></li>
       </ul>
     </div>
-    <A href={'/'} className="btn btn-ghost normal-case text-xl">A-Project</A>
+    <A href={'/'} className="btn btn-ghost normal-case text-xl">A-Project-Solid</A>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

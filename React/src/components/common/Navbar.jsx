@@ -15,7 +15,7 @@ const Navbar = () =>{
         <li><Link to={'/detail/actors'}>Actors</Link></li>
       </ul>
     </div>
-    <Link to={'/'} className="btn btn-ghost normal-case text-xl">A-Project</Link>
+    <Link to={'/'} className="btn btn-ghost normal-case text-xl">A-Project-React</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
