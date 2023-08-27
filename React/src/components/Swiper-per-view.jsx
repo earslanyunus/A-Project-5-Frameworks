@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 
 import "swiper/css";
 import { Link } from "react-router-dom";
 
 export const SwiperPerView = ({ movies,image}) => {
+  
 const controlTypeofData = (data)=>{
   if(data.poster_path){
     if (data.first_air_date) {
@@ -25,16 +28,15 @@ const controlTypeofData = (data)=>{
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         className="container mx-auto"
-        spaceBetween={24}
-        slidesPerView={"5"}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
+        spaceBetween={48}
+        slidesPerView={'5'}
+        
+        
       >
         {movies?.map((movie) => {
           return (
-            <SwiperSlide key={movie.id} className="h-full">
-              <Link to={`movie/${movie.id}`}>
+            <SwiperSlide  key={movie.id} className="h-full pb-4 ">
+              <Link to={`movie/${movie.id}`} >
                 <div className="card w-56 bg-base-100  shadow-xl">
                   <figure>
                     <img
@@ -44,7 +46,7 @@ const controlTypeofData = (data)=>{
                     />
                   </figure>
                   <div className="card-body h-full">
-                    <h2 className="card-title">{movie.title||movie.name}</h2>
+                    <p className="card-title whitespace-nowrap text-ellipsis overflow-hidden block">{movie.title||movie.name}</p>
                   </div>
                 </div>
               </Link>

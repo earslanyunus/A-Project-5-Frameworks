@@ -10,6 +10,7 @@ export const SwiperPerView = ({ movies,image}) => {
 
 
 const controlTypeofData = (data)=>{
+  
   if(data.poster_path){
     if (data.first_air_date) {
       return `series/${data.id}`
@@ -29,10 +30,11 @@ const controlTypeofData = (data)=>{
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         class="container mx-auto"
         space-between={24}
-        slides-per-view={5}
+        slides-per-view="5"
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
         pagination="true" 
+        navigation="true"
       >
         <For each={movies()}>
           {(movie)=>(

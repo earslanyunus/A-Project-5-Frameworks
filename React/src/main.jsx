@@ -1,11 +1,15 @@
 import React, { Children } from 'react'
+import { supabase } from './supabase/client.js'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import MoviesPage from './view/MoviesPage.jsx'
 import DetailLayout from './view/DetailLayout.jsx'
-
+import LoginPage from './view/LoginPage.jsx'
+import { store } from './store/store.js'
+import { Provider } from 'react-redux'
+import('preline')
 
 const router = createBrowserRouter([
   {
@@ -22,13 +26,19 @@ const router = createBrowserRouter([
         element: <MoviesPage/>,
       }
     ]
+  },
+  {
+    path:'login',
+    element:<LoginPage/>
   }
 ])
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <Provider store={store}>
   <React.StrictMode>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
   </React.StrictMode>,
+  </Provider>
 )
