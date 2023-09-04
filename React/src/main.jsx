@@ -10,7 +10,7 @@ import LoginPage from './view/LoginPage.jsx'
 import { store } from './store/store.js'
 import { Provider } from 'react-redux'
 import Signup from "./view/Signup.jsx";
-import Verification from "./view/Verification.jsx";
+import Detail_movie from "./view/Detail_movie.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
       {
         path:'movies',
         element: <MoviesPage/>,
+      },
+      {
+      path:'movie/:movieid',
+        element:<Detail_movie/>
       }
     ]
   },
@@ -36,7 +40,7 @@ const router = createBrowserRouter([
     path:'signup',
     element:<Signup/>
   },
-  
+
 ])
 
 

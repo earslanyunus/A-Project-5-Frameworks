@@ -40,3 +40,37 @@ export const getPopularSeries = async () => {
       throw error;
     }
   };
+
+export const getMovieDetails = async (id) => {
+  try{
+    const response = await fetch(
+        `${baseUrl}movie/${id}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+    )
+    const data = await response.json()
+    return data.results
+  }catch (e) {
+    throw e
+  }
+}
+export const getMovieCredits = async (movieid)=>{
+  try {
+    const response = await  fetch(`${baseUrl}movie/${movieid}/credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`)
+    const data = await response.json()
+    return data.results
+  }
+  catch (e) {
+    throw e
+  }
+
+}
+
+export const getSimilarMovies = async (movieid)=>{
+  try{
+    const data = await fetch(`${baseUrl}movie/${movieid}/similar?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`)
+    const response = await data.json()
+    return response.results
+  }
+  catch (e) {
+    throw e
+  }
+}
