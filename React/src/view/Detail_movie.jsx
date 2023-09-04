@@ -3,12 +3,12 @@ import {getMovieCredits, getMovieDetails, getSimilarMovies} from "../utils/tmdb.
 import {useParams} from "react-router-dom";
 
 const Detail_movie = () => {
-    const {movieid} = useParams()
+    const {id} = useParams()
     useEffect(()=>{
         const getData = async ()=>{
-            await getMovieDetails(movieid)
-            await getMovieCredits(movieid)
-            await getSimilarMovies(movieid)
+            await getMovieDetails(id)
+            await getMovieCredits(id)
+            await getSimilarMovies(id)
         }
         getData()
 
