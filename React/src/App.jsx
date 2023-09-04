@@ -25,7 +25,7 @@ const App = () => {
       <Navbar />
       <div className="flex flex-col mt-8">
         <SwiperPart head={"Popular Movies"} cards={popularMovies} type={'movie'}/>
-        <SwiperPart head={"Popular Actors"} cards={popularPeoples} type={'people'}/>
+        <SwiperPart head={"Popular Actors"} cards={popularPeoples} type={'person'}/>
         <SwiperPart head={"Popular Series"} cards={popularSeries} type={'series'}/>
       </div>
       <Footer />

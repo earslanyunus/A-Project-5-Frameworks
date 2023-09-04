@@ -11,6 +11,7 @@ import { store } from './store/store.js'
 import { Provider } from 'react-redux'
 import Signup from "./view/Signup.jsx";
 import Detail_movie from "./view/Detail_movie.jsx";
+import Detail_person from "./view/Detail_person.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
         element: <MoviesPage/>,
       },
       {
-      path:'movie/:movieid',
+      path:'movie/:id',
         element:<Detail_movie/>
+      },
+      {
+        path:'person/:id',
+        element:<Detail_person/>
       }
     ]
   },

@@ -74,3 +74,38 @@ export const getSimilarMovies = async (movieid)=>{
     throw e
   }
 }
+
+export const getPersonDetails = async (id) => {
+  try{
+    const response = await fetch(
+        `${baseUrl}person/${id}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+    )
+    const data = await response.json()
+    return data.results
+  }catch (e) {
+    throw e
+  }
+}
+
+export const getPersonMovies = async (id) => {
+  try{
+    const response = await fetch(
+        `${baseUrl}person/${id}/movie_credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+    )
+    const data = await response.json()
+    return data.results
+  }catch (e) {
+    throw e
+  }
+}
+export const getPersonSeries = async (id) => {
+  try{
+    const response = await fetch(
+        `${baseUrl}person/${id}/tv_credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+    )
+    const data = await response.json()
+    return data.results
+  }catch (e) {
+    throw e
+  }
+}
