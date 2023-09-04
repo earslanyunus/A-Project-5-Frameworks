@@ -9,7 +9,8 @@ import DetailLayout from './view/DetailLayout.jsx'
 import LoginPage from './view/LoginPage.jsx'
 import { store } from './store/store.js'
 import { Provider } from 'react-redux'
-import('preline')
+import Signup from "./view/Signup.jsx";
+import Verification from "./view/Verification.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,12 @@ const router = createBrowserRouter([
   {
     path:'login',
     element:<LoginPage/>
-  }
+  },
+  {
+    path:'signup',
+    element:<Signup/>
+  },
+  
 ])
 
 
@@ -39,6 +45,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <React.StrictMode>
       <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
   </Provider>
 )
