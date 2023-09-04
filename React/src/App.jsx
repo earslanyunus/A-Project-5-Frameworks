@@ -24,9 +24,9 @@ const App = () => {
     <div className=" min-h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-col mt-8">
-        <SwiperPart head={"Popular Movies"} movies={popularMovies} />
-        <SwiperPart head={"Popular Actors"} movies={popularPeoples} />
-        <SwiperPart head={"Popular Series"} movies={popularSeries} />
+        <SwiperPart head={"Popular Movies"} cards={popularMovies} type={'movie'}/>
+        <SwiperPart head={"Popular Actors"} cards={popularPeoples} type={'people'}/>
+        <SwiperPart head={"Popular Series"} cards={popularSeries} type={'series'}/>
       </div>
       <Footer />
     </div>

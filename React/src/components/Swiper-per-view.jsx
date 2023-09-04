@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import { Link } from "react-router-dom";
 
-export const SwiperPerView = ({ movies,image}) => {
+export const SwiperPerView = ({ cards,image,type}) => {
   
 const controlTypeofData = (data)=>{
   if(data.poster_path){
@@ -33,20 +33,20 @@ const controlTypeofData = (data)=>{
         
         
       >
-        {movies?.map((movie) => {
+        {cards?.map((card) => {
           return (
-            <SwiperSlide  key={movie.id} className="h-full pb-4 ">
-              <Link to={`movie/${movie.id}`} >
+            <SwiperSlide  key={card.id} className="h-full pb-4 ">
+              <Link to={`detail/${type}/${card.id}`} >
                 <div className="card w-56 bg-base-100  shadow-xl">
                   <figure>
                     <img
                       className="object-contain w-[100%] h-auto"
-                      src={`https://image.tmdb.org/t/p/original/${movie.poster_path || movie.profile_path}`}
+                      src={`https://image.tmdb.org/t/p/original/${card.poster_path || card.profile_path}`}
                       alt="{movie.title}"
                     />
                   </figure>
                   <div className="card-body h-full">
-                    <p className="card-title whitespace-nowrap text-ellipsis overflow-hidden block">{movie.title||movie.name}</p>
+                    <p className="card-title whitespace-nowrap text-ellipsis overflow-hidden block">{card.title||card.name}</p>
                   </div>
                 </div>
               </Link>
