@@ -12,6 +12,7 @@ import { Provider } from 'react-redux'
 import Signup from "./view/Signup.jsx";
 import Detail_movie from "./view/Detail_movie.jsx";
 import Detail_person from "./view/Detail_person.jsx";
+import Detail_series from "./view/Detail_series.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path:'person/:id',
         element:<Detail_person/>
+      },
+      {
+        path:'series/:id',
+        element:<Detail_series/>
       }
     ]
   },
