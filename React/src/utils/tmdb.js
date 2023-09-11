@@ -47,7 +47,7 @@ export const getMovieDetails = async (id) => {
         `${baseUrl}movie/${id}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
     )
     const data = await response.json()
-    return data.results
+    return data
   }catch (e) {
     throw e
   }
@@ -56,7 +56,7 @@ export const getMovieCredits = async (movieid)=>{
   try {
     const response = await  fetch(`${baseUrl}movie/${movieid}/credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`)
     const data = await response.json()
-    return data.results
+    return data
   }
   catch (e) {
     throw e
@@ -68,7 +68,7 @@ export const getSimilarMovies = async (movieid)=>{
   try{
     const data = await fetch(`${baseUrl}movie/${movieid}/similar?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`)
     const response = await data.json()
-    return response.results
+    return response
   }
   catch (e) {
     throw e
@@ -81,7 +81,7 @@ export const getPersonDetails = async (id) => {
         `${baseUrl}person/${id}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
     )
     const data = await response.json()
-    return data.results
+    return data
   }catch (e) {
     throw e
   }
@@ -93,7 +93,7 @@ export const getPersonMovies = async (id) => {
         `${baseUrl}person/${id}/movie_credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
     )
     const data = await response.json()
-    return data.results
+    return data
   }catch (e) {
     throw e
   }
@@ -104,7 +104,7 @@ export const getPersonSeries = async (id) => {
         `${baseUrl}person/${id}/tv_credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
     )
     const data = await response.json()
-    return data.results
+    return data
   }catch (e) {
     throw e
   }
@@ -116,7 +116,7 @@ export const getSeriesDetails = async (id) => {
         `${baseUrl}tv/${id}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
     )
     const data = await response.json()
-    return data.results
+    return data
   }catch (e) {
     throw e
   }
@@ -128,7 +128,7 @@ export const getSeriesCredits = async (id) => {
         `${baseUrl}tv/${id}/credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
     )
     const data = await response.json()
-    return data.results
+    return data
   }catch (e) {
     throw e
   }
@@ -139,7 +139,7 @@ export const getSeriesSimilar = async (id) => {
         `${baseUrl}tv/${id}/similar?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
     )
     const data = await response.json()
-    return data.results
+    return data
   }catch (e) {
     throw e
   }
