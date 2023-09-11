@@ -36,12 +36,12 @@ const controlTypeofData = (data)=>{
         {cards?.map((card) => {
           return (
             <SwiperSlide  key={card.id} className="h-full pb-4 ">
-              <Link to={`detail/${type}/${card.id}`} >
+              <Link to={`/detail/${type}/${card.id}`} onClick={scrollTo(0,0)}>
                 <div className="card w-56 bg-base-100  shadow-xl">
                   <figure>
                     <img
                       className="object-contain w-[100%] h-auto"
-                      src={`https://image.tmdb.org/t/p/original/${card.poster_path || card.profile_path}`}
+                      src={`https://image.tmdb.org/t/p/original/${card.poster_path || card.profile_path }`}
                       alt="{movie.title}"
                     />
                   </figure>
