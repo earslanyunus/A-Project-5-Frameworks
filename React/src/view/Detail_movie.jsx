@@ -65,10 +65,10 @@ const Detail_movie = () => {
 
     return (
         <main className={'container'}>
-            <div className="flex mt-4">
+            <div className="flex mt-4 mb-4">
                 <img className={'w-1/5 rounded '} src={imagePath + movieDetail?.poster_path} alt="" />
                 <div className="ms-12">
-                    <p className="text-5xl upp">{movieDetail.title}</p>
+                    <p className="text-5xl ">{movieDetail.title}</p>
                     <div className="badge badge-outline badge-sm">{movieDetail.status}  {new Date(movieDetail.release_date).toLocaleDateString('tr')}</div>
                     <p className="mt-4 mb-4">{movieDetail?.overview}</p>
                     {movieDetail?.genres?.map(elm => {
@@ -77,7 +77,7 @@ const Detail_movie = () => {
                     <br />
                     <div className="stats shadow mt-8">
 
-                        <div className="stat place-items-center ps-0">
+                        <div className="stat place-items-center ">
                             <div className="stat-title">Budget</div>
                             {loading?<p>Loading</p>:<div className="stat-value">${new Intl.NumberFormat().format(movieDetail.budget)}</div>}
                         </div>
