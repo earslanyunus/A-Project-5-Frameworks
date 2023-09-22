@@ -1,21 +1,33 @@
 import { Link } from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {supabase} from "../../supabase/client.js";
+import { useState } from "react";
+import { onInput } from "../../store/searchstore.js";
 
 const Navbar = () => {
+  const [search, setSearch] = useState('')
+const dispatch = useDispatch()
   const user = useSelector((state) => state.authStore.user)
-
+  
   const onSignOut = ()=>{
     supabase.auth.signOut()
+  }
+  const onType = (e)=>{
+    dispatch(onInput(e.target.value))
+    setSearch(e.target.value)
+
+
+           
   }
   return (
     <div className="navbar bg-base-100">
   <div className="flex-1">
-    <Link to={'/'} className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+    <Link to={'/'} className="btn btn-ghost normal-case text-xl">A-Project-React</Link>
   </div>
   <div className="flex-none gap-2">
     <div className="form-control">
-      <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+      
+      <input type="text" value={search} onChange={onType} placeholder="Search" className="input input-bordered w-24 md:w-auto" />
     </div>
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
