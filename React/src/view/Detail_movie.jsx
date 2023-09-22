@@ -16,7 +16,7 @@ const Detail_movie = () => {
             setLoading(false)
         })
         getMovieCredits(id).then(elm => {
-            const crew = elm.crew.reduce((accumulator, current) => {
+            const cast = elm.cast.reduce((accumulator, current) => {
                 let exists = accumulator.find(item => {
                     return item.id === current.id;
                 });
@@ -25,7 +25,7 @@ const Detail_movie = () => {
                 }
                 return accumulator;
             }, []);
-            crew.sort((a, b) => {
+            cast.sort((a, b) => {
                 if (a.popularity > b.popularity) {
                     return -1
                 }
@@ -34,7 +34,7 @@ const Detail_movie = () => {
                 }
                 return 0
             })
-            setMovieCrew(crew)
+            setMovieCrew(cast)
         })
         getSimilarMovies(id).then(elm => {
             elm.results.sort((a, b) => {

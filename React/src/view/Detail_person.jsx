@@ -21,8 +21,7 @@ const Detail_person = () => {
        })
        getPersonMovies(id)
        .then(elm=>{
-        
-       elm =  elm.crew.reduce((accumulator, current) => {
+       elm =  elm.cast.reduce((accumulator, current) => {
             let exists = accumulator.find(item => {
                 return item.id === current.id;
             });

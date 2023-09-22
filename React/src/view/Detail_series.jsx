@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-
 import { useParams } from "react-router-dom";
 import { getSeriesCredits, getSeriesDetails, getSeriesSimilar } from "../utils/tmdb.js";
 import { useState } from "react";
+import { SwiperPart } from "../components/SwiperPart.jsx";
+
 const imagePath = 'https://image.tmdb.org/t/p/original'
 
 const Detail_series = () => {
@@ -20,28 +21,43 @@ const Detail_series = () => {
         )
         getSeriesCredits(id).then(elm => {
             console.log(elm);
-            // elm =  elm.crew.reduce((accumulator, current) => {
-            //     let exists = accumulator.find(item => {
-            //         return item.id === current.id;
-            //     });
-            //     if (!exists) {
-            //         accumulator = accumulator.concat(current);
-            //     }
-            //     return accumulator;
-            // }, []);
-            // elm.sort((a, b) => {
-            //     if (a.popularity > b.popularity) {
-            //         return -1
-            //     }
-            //     if (a.popularity < b.popularity) {
-            //         return 1
-            //     }
-            //     return 0
-            // })
+            elm =  elm.cast.reduce((accumulator, current) => {
+                let exists = accumulator.find(item => {
+                    return item.id === current.id;
+                });
+                if (!exists) {
+                    accumulator = accumulator.concat(current);
+                }
+                return accumulator;
+            }, []);
+            elm.sort((a, b) => {
+                if (a.popularity > b.popularity) {
+                    return -1
+                }
+                if (a.popularity < b.popularity) {
+                    return 1
+                }
+                return 0
+            })
+            elm = elm.filter(elm =>{
+                return elm.known_for_department ==="Acting"
+            })
+            console.log(elm);
             setSeriesCrew(elm)
             
         })
         getSeriesSimilar(id).then(elm => {
+            elm = elm.results
+            elm.sort((a,b)=>{
+                if(a.popularity > b.popularity ){
+                    return -1
+                }
+                if(a.popularity <  b.popularity ){
+                    return 1
+                }
+                return 0 
+            })
+            console.log(elm);
             setSeriesSimilar(elm)
         })
 
@@ -81,9 +97,8 @@ const Detail_series = () => {
                 </div>
             </div>
         </div>
-
-        {/* <SwiperPart head={"Actors"} cards={movieCrew} type={'person'} />
-        <SwiperPart head={"Similar Movies"} cards={moviesimilar} type={'movie'} /> */}
+        <SwiperPart head={"Actors"} cards={seriesCrew} type={'person'} /> 
+        <SwiperPart head={"Similar Series"} cards={seriesSimilar} type={'series'} /> 
 
     </main>
     )
