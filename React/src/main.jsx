@@ -13,6 +13,7 @@ import Signup from "./view/Signup.jsx";
 import Detail_movie from "./view/Detail_movie.jsx";
 import Detail_person from "./view/Detail_person.jsx";
 import Detail_series from "./view/Detail_series.jsx";
+import { SearchPage } from './view/SearchPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
     path:'signup',
     element:<Signup/>
   },
+  {
+    path:'search/:category/:text',
+    element:<SearchPage/>
+  }
 
 ])
 

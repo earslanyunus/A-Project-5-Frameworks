@@ -144,3 +144,13 @@ export const getSeriesSimilar = async (id) => {
     throw e
   }
 }
+export const getSearchResult = async(text,category)=>{
+  try{
+    const response  = await fetch(`${baseUrl}search/${category}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}&query=${text}`)
+    const data = await response.json()
+    return data
+  }
+  catch(e){
+    throw e
+  }
+}
