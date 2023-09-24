@@ -1,15 +1,12 @@
 import React, { Children } from 'react'
-import { supabase } from './supabase/client.js'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import MoviesPage from './view/MoviesPage.jsx'
 import DetailLayout from './view/DetailLayout.jsx'
-import LoginPage from './view/LoginPage.jsx'
 import { store } from './store/store.js'
 import { Provider } from 'react-redux'
-import Signup from "./view/Signup.jsx";
 import Detail_movie from "./view/Detail_movie.jsx";
 import Detail_person from "./view/Detail_person.jsx";
 import Detail_series from "./view/Detail_series.jsx";
@@ -42,14 +39,6 @@ const router = createBrowserRouter([
         element:<Detail_series/>
       }
     ]
-  },
-  {
-    path:'login',
-    element:<LoginPage/>
-  },
-  {
-    path:'signup',
-    element:<Signup/>
   },
   {
     path:'search/:category/:text',
