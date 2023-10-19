@@ -1,49 +1,53 @@
 <script>
+  import { Link } from "svelte-routing";
 // @ts-nocheck
-
-import { Link } from "svelte-routing";
+let searchvalue
+let category = "DEFAULT"
+const onselecthandle = (e) => {
+    category = e.target.value
+    // dispatch(onCategory(e.target.value));
+  };
+const searchevent = (e)=>{
+   
+    if (category !== "DEFAULT" && searchvalue !== "") {
+      // navigate(`/search/${category}/${searchinput.current.value}`);
+   
+  }
+  }
 </script>
 
-<div class="navbar bg-base-300">
-    <div class="navbar-start">
-      <div class="dropdown">
-        <span tabIndex={0} class="btn btn-ghost lg:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-        </span>
-        <ul tabIndex={0} class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li><Link to={'/detail/movies'}>Movies</Link></li>
-  
-          <li><Link to={'/detail/series'}>Series</Link></li>
-          <li><Link to={'/detail/achrefrs'}>Actors</Link></li>
-        </ul>
-      </div>
-      <Link to={'/'} class="btn btn-ghost normal-case text-xl">A-Project-Svelte</Link>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1">
-      <li><Link to={'/detail/movies'}>Movies</Link></li>
-  
-  <li><Link to={'/detail/series'}>Series</Link></li>
-  <li><Link to={'/detail/achrefrs'}>Actors</Link></li>
-      </ul>
-    </div>
-    <div class="navbar-end">
-    <div class="dropdown dropdown-end">
-        <span tabIndex={0} class="btn btn-ghost btn-circle avatar">
-          <div class="w-10 rounded-full">
-            <!-- svelte-ignore a11y-missing-attribute -->
-            <img src="/images/shrefck/phohref-1534528741775-53994a69daeb.jpg" />
-          </div>
-        </span>
-        <ul tabIndex={0} class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-300 rounded-box w-52">
-          <li>
-            <Link to={'profile'} class="justify-between">
-              Profile
-              <span class="badge">New</span>
-            </Link>
-          </li>
-          <!-- svelte-ignore a11y-missing-attribute -->
-          <li><a>Logout</a></li>
-        </ul>
-      </div>  </div>
+<div class="navbar bg-base-100 justify-between">
+  <div >
+    <Link to={"/"} class="btn btn-ghost normal-case text-xl">
+      A-Project-Svelte
+    </Link>
   </div>
+  <div class="flex-none gap-2">
+    <div class="flex">
+      <select
+        value={category}
+        on:change={onselecthandle}
+        class="select select-bordered rounded-tr-none rounded-br-none focus:outline-none w-full border-r-0 max-w-xs"
+      >
+        <option disabled value={"DEFAULT"}>
+          Search Category?
+        </option>
+        <option value={"movie"}>Movie</option>
+        <option value={"tv"}>Series</option>
+        <option value={"person"}>Actor</option>
+      </select>
+      <div class="form-control">
+        <input
+          bind:value={searchvalue}
+          type="text"
+          placeholder="Search"
+          class="focus:outline-none  input input-bordered w-24 md:w-auto  border-r-0 rounded-none  border-l-0"
+        />
+      </div>
+    <button on:click={searchevent} class="btn btn-outline border-gray-300 rounded-bl-none rounded-tl-none border-l-0">Search</button>
+    </div>
+    
+  </div>
+  <div></div>
+  
+</div>

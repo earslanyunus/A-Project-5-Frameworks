@@ -4,6 +4,9 @@ export default {
     './src/**/*.svelte',
   ],
   theme: {
+    container:{
+      center:true
+    },
     extend: {},
   },
   plugins: [require("daisyui")],

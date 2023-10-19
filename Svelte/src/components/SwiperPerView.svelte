@@ -9,12 +9,12 @@
   const controlTypeofData = (data) => {
     if (data.poster_path) {
       if (data.first_air_date) {
-        return `series/${data.id}`;
+        return `detail/series/${data.id}`;
       } else {
-        return `movie/${data.id}`;
+        return `detail/movie/${data.id}`;
       }
     } else {
-      return `actor/${data.id}`;
+      return `detail/actor/${data.id}`;
     }
   };
 </script>
@@ -22,14 +22,11 @@
 <swiper-container
   modules={[Navigation, Pagination, Scrollbar, A11y]}
   class="container mx-auto"
-  space-between={24}
+  space-between={48}
   slides-per-view={5}
-  onSwiper={(swiper) => console.log(swiper)}
-  onSlideChange={() => console.log("slide change")}
-  pagination="true"
 >
 {#each movies as movie}
-  <swiper-slide class="h-full">
+  <swiper-slide class="h-full pb-4">
     <Link to={controlTypeofData(movie)}>
       <div class="card w-56 bg-base-100 shadow-xl">
         <figure>
@@ -43,7 +40,7 @@
         </figure>
         
         <div class="card-body h-full">
-          <h2 class="card-title">{movie.title || movie.name}</h2>
+          <p class="card-title whitespace-nowrap text-ellipsis overflow-hidden block">{movie.title || movie.name}</p>
         </div>
       </div>
     </Link>
