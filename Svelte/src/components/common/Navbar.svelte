@@ -1,17 +1,24 @@
 <script>
-  import { Link } from "svelte-routing";
+    import { onMount } from "svelte";
+  import { Link, navigate } from "svelte-routing";
 // @ts-nocheck
 let searchvalue
 let category = "DEFAULT"
-const onselecthandle = (e) => {
-    category = e.target.value
-    // dispatch(onCategory(e.target.value));
-  };
+onMount(()=>{
+  if(window.location.pathname==='/search'){
+    const queryParams = new URLSearchParams(window.location.search);
+    const categoryparams = queryParams.get('category');
+    const searchvaluepara = queryParams.get('val');
+    category = categoryparams
+    searchvalue = searchvaluepara
+  }
+})
 const searchevent = (e)=>{
    
     if (category !== "DEFAULT" && searchvalue !== "") {
-      // navigate(`/search/${category}/${searchinput.current.value}`);
-   
+      navigate(`/search?category=${category}&val=${searchvalue}`)
+      location.reload();
+
   }
   }
 </script>
@@ -25,8 +32,7 @@ const searchevent = (e)=>{
   <div class="flex-none gap-2">
     <div class="flex">
       <select
-        value={category}
-        on:change={onselecthandle}
+      bind:value={category}
         class="select select-bordered rounded-tr-none rounded-br-none focus:outline-none w-full border-r-0 max-w-xs"
       >
         <option disabled value={"DEFAULT"}>
