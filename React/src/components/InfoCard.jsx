@@ -1,34 +1,30 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation} from "react-router-dom";
 import { getSearchResult } from "../utils/tmdb";
-import { onSearch } from "../store/searchstore";
 
 export const InfoCard = () => {
-    const dispatch = useDispatch()
-    const searchResult = useSelector(state => state.searchstore.searchResult)
-    const selectedCategory = useSelector(state=> state.searchstore.searchCategory)
-    const {text,category} = useParams()
-   
+    const [searchResult,setSearchResult] = useState([])
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search);
+    const category = queryParams.get('category');
+    const text = queryParams.get('val');
+    
     useEffect(()=>{
-        console.log(text,selectedCategory);
      getSearchResult(text,category)
      .then(elm=>{
-        dispatch(onSearch(elm.results))
+        setSearchResult(elm.results)
      })
 
     },[])
 
-    const controltype = ()=>{
-        return selectedCategory === 'tv' ? 'series':selectedCategory
-      }
+
     return (
         <>
                             <div className="flex container gap-12 flex-wrap justify-center mt-12">
 
             {searchResult?.map((card) => {
                 return (
-                    <Link to={`/detail/${controltype()}/${card.id}`} key={card.id} className="flex">
+                    <Link to={`/detail/${category}/${card.id}`} key={card.id} className="flex">
                         <div className="card h-100 w-56 bg-base-100  shadow-xl">
                             <figure style={{"height":"100%"}}>
                                 <img

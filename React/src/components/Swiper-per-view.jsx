@@ -12,7 +12,7 @@ export const SwiperPerView = ({ cards,image,type}) => {
 const controlTypeofData = (data)=>{
   if(data.poster_path){
     if (data.first_air_date) {
-      return `series/${data.id}`
+      return `tv/${data.id}`
     }
     else{
       return `movie/${data.id}`

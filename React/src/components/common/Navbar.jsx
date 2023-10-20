@@ -1,34 +1,40 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import { onCategory, onInput } from "../../store/searchstore.js";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("DEFAULT");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const searchText = useSelector((state)=>state.searchstore.searchText)
+  const location = useLocation()
   const searchinput = useRef()
+  const queryParams = new URLSearchParams(location.search);
+  const categoryparam = queryParams.get('category');
+  const textparam = queryParams.get('val');
+    
+
   const onselecthandle = (e) => {
     setCategory(e.target.value);
-    dispatch(onCategory(e.target.value));
   };
 
-  const onType = async (e) => {
-    dispatch(onInput(e.target.value));
+  const onType =  (e) => {
     setSearch(e.target.value);
 
     
   };
-
+  useEffect(()=>{
+    
+    if (location.pathname =='/search') {
+      setSearch(textparam)
+      setCategory(categoryparam)
+    }
+  },[])
 
 
   const searchevent = (e)=>{
-    console.log('search event calisti');
-    console.log(searchinput);
+    
     if (category !== "DEFAULT" && searchinput.current.value !== "") {
-      navigate(`/search/${category}/${searchinput.current.value}`);
+      navigate(`/search?category=${category}&val=${searchinput.current.value}`);
+      navigate(0)
    
   }
   }
@@ -58,6 +64,7 @@ const Navbar = () => {
             <input
               ref={searchinput}
               type="text"
+              value={search}
               onChange={onType}
               placeholder="Search"
               className="focus:outline-none  input input-bordered w-24 md:w-auto  border-r-0 rounded-none  border-l-0"
