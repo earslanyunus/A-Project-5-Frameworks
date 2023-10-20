@@ -44,7 +44,7 @@ const searchevent = (e)=>{
           class="focus:outline-none  input input-bordered w-24 md:w-auto  border-r-0 rounded-none  border-l-0"
         />
       </div>
-    <button on:click={searchevent} class="btn btn-outline border-gray-300 rounded-bl-none rounded-tl-none border-l-0">Search</button>
+    <button on:click={searchevent} class="btn btn-outline dark:border-gray-700 border-gray-300 rounded-bl-none rounded-tl-none border-l-0">Search</button>
     </div>
     
   </div>

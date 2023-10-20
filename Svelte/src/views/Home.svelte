@@ -2,6 +2,7 @@
     import { getPopularMovies,getPopularPeople,getPopularSeries } from "../utils/tmdb";
     import SwiperPart from "../components/SwiperPart.svelte";
     import Navbar from "../components/common/Navbar.svelte";
+    import Footer from "../components/common/Footer.svelte";
     let popularMovies 
     let popularPeoples 
     let popularSeries 
@@ -27,7 +28,7 @@
         <SwiperPart head="Popular Series" movies={popularSeries} />
     </div>
     </div>
-    <!-- <Footer /> -->
+    <Footer />
 
 
 
