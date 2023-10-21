@@ -70,7 +70,7 @@ const Navbar = () => {
               className="focus:outline-none  input input-bordered w-24 md:w-auto  border-r-0 rounded-none  border-l-0"
             />
           </div>
-        <button onClick={()=>searchevent()} className="btn btn-outline border-gray-300 rounded-bl-none rounded-tl-none border-l-0">Search</button>
+        <button onClick={()=>searchevent()} className="btn btn-outline dark:border-gray-700 border-gray-300 rounded-bl-none rounded-tl-none border-l-0">Search</button>
         </div>
         
       </div>
