@@ -1,48 +1,66 @@
-import { A } from "@solidjs/router";
-const Navbar = () =>{
-    return(
-        <div className="navbar bg-base-300">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <label tabIndex={0} className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li><A href={'/detail/movies'}>Movies</A></li>
+import { A, useLocation, useNavigate } from "@solidjs/router";
+import { createSignal } from "solid-js";
+const Navbar = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [search, setSearch] = createSignal("");
+  const [category, setCategory] = createSignal("DEFAULT");
+  const onselecthandle = (e) => {
+    setCategory(e.target.value);
+  };
+  const onType = (e) => {
+    setSearch(e.target.value);
 
-        <li><A href={'/detail/series'}>Series</A></li>
-        <li><A href={'/detail/achrefrs'}>Actors</A></li>
-      </ul>
-    </div>
-    <A href={'/'} className="btn btn-ghost normal-case text-xl">A-Project-Solid</A>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-    <li><A href={'/detail/movies'}>Movies</A></li>
 
-<li><A href={'/detail/series'}>Series</A></li>
-<li><A href={'/detail/achrefrs'}>Achrefrs</A></li>
-    </ul>
-  </div>
-  <div className="navbar-end">
-  <div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src="/images/shrefck/phohref-1534528741775-53994a69daeb.jpg" />
+  };
+  const searchevent = (e) => {
+
+    if (category() !== "DEFAULT" && search() !== "") {
+      console.log(location.pathname);
+      navigate(`/search?category=${category()}&val=${search()}`);
+
+    }
+  }
+  return (
+    <div className="navbar bg-base-100 justify-between">
+      <div >
+        <A href={"/"} className="btn btn-ghost normal-case text-xl">
+          A-Project-Solid
+        </A>
+      </div>
+      <div className="flex-none gap-2">
+        <div className="flex">
+          <select
+            value={category()}
+            onChange={onselecthandle}
+            className="select select-bordered rounded-tr-none rounded-br-none focus:outline-none w-full border-r-0 max-w-xs"
+          >
+            <option disabled value={"DEFAULT"}>
+              Search Category?
+            </option>
+            <option value={"movie"}>Movie</option>
+            <option value={"tv"}>Series</option>
+            <option value={"person"}>Actor</option>
+          </select>
+          <div className="form-control">
+            <input
+              type="text"
+              value={search()}
+              onChange={onType}
+              placeholder="Search"
+              className="focus:outline-none  input input-bordered w-24 md:w-auto  border-r-0 rounded-none  border-l-0"
+            />
+          </div>
+          <button onClick={()=>searchevent()} className="btn btn-outline dark:border-gray-700 border-gray-300 rounded-bl-none rounded-tl-none border-l-0">Search</button>
         </div>
-      </label>
-      <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-300 rounded-box w-52">
-        <li>
-          <A href={'profile'} className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </A>
-        </li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>  </div>
-</div>
-    )
+
+      </div>
+      <div>
+        
+      </div>
+
+    </div>
+  )
 }
 
 export default Navbar;

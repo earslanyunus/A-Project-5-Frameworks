@@ -1,5 +1,5 @@
 import Navbar from '../components/common/Navbar'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "@solidjs/router";
 import Footer from '../components/common/Footer'
 
 const DetailLayout = () => {

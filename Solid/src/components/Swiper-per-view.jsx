@@ -10,16 +10,15 @@ export const SwiperPerView = ({ movies,image}) => {
 
 
 const controlTypeofData = (data)=>{
-  
   if(data.poster_path){
     if (data.first_air_date) {
-      return `series/${data.id}`
+      return `/detail/series/${data.id}`
     }
     else{
-      return `movie/${data.id}`
+      return `/detail/movie/${data.id}`
     }
   }else {
-    return `actor/${data.id}`
+    return `/detail/actor/${data.id}`
 
   }
 }
@@ -33,13 +32,13 @@ const controlTypeofData = (data)=>{
         slides-per-view="5"
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
-        pagination="true" 
-        navigation="true"
       >
+        {movies.loading && <span className="container mx-auto loading loading-spinner loading-lg"></span>}
+        {movies()&& (
         <For each={movies()}>
           {(movie)=>(
-            <swiper-slide key={movie.id} className="h-full">
-            <A href={`movie/${movie.id}`}>
+            <swiper-slide key={movie.id} className="h-full pb-4">
+            <A href={controlTypeofData(movie)}>
               <div className="card w-56 bg-base-100  shadow-xl">
                 <figure>
                   <img
@@ -49,13 +48,14 @@ const controlTypeofData = (data)=>{
                   />
                 </figure>
                 <div className="card-body h-full">
-                  <h2 className="card-title">{movie.title||movie.name}</h2>
+                  <p className="card-title whitespace-nowrap text-ellipsis overflow-hidden block">{movie.title||movie.name}</p>
                 </div>
               </div>
             </A>
           </swiper-slide>
           )}
           </For>
+          )}
       </swiper-container>
     </>
   );
