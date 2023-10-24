@@ -60,7 +60,7 @@ const Detail_movie = () => {
 
     return (
 
-        <main className={'container mx-auto'}>
+        <main className={'container '}>
             {movieDetail.loading && <span className="container mx-auto loading loading-spinner loading-lg"></span>}
             {movieDetail.error && <div>{movieDetail.error.message}</div>}
             {movieDetail() && (

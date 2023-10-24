@@ -66,7 +66,7 @@ const Detail_person = () => {
 
 
     return (
-        <main className="container mx-auto">
+        <main className="container ">
             {personDetail.loading && <span className="container mx-auto loading loading-spinner loading-lg"></span>}
             {personDetail.error && <div>{personDetail.error.message}</div>}
             {personDetail() && (
