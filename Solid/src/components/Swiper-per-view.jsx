@@ -18,7 +18,7 @@ const controlTypeofData = (data)=>{
       return `/detail/movie/${data.id}`
     }
   }else {
-    return `/detail/actor/${data.id}`
+    return `/detail/person/${data.id}`
 
   }
 }
