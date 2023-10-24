@@ -9,6 +9,7 @@ import Detaillayout from './view/DetailLayout';
 import Detail_movie from './view/Detail_movie';
 import Detail_person from './view/Detail_person';
 import Detail_series from './view/Detail_series';
+import SearchPage from './view/SearchPage';
 
 const root = document.getElementById('root')
 
@@ -22,6 +23,8 @@ render(() => (
                     <Route path={'/tv/:id'} component={Detail_series}/>
 
             </Route>
+            <Route path={'/search'} component={SearchPage} />
+
         </Routes>
         </Router>
 
