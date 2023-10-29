@@ -6,18 +6,16 @@ import { ref, watchEffect } from "vue";
 import { RouterLink } from "vue-router";
   register();
   const props = defineProps(['movies'])
-  watchEffect(()=>{
-    console.log(props.movies);
-  })
+  
   const controlTypeofData = (data) => {
     if (data.poster_path) {
       if (data.first_air_date) {
-        return `detail/tv/${data.id}`;
+        return `/detail/tv/${data.id}`;
       } else {
-        return `detail/movie/${data.id}`;
+        return `/detail/movie/${data.id}`;
       }
     } else {
-      return `detail/person/${data.id}`;
+      return `/detail/person/${data.id}`;
     }
   };
 </script>
