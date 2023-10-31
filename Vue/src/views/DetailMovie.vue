@@ -1,7 +1,6 @@
 <script setup>
 
     import { onMounted, ref, watch } from 'vue';
-import Swiperpart from '../components/swiperpart.vue';
     import {getMovieDetails,getMovieCredits,getSimilarMovies} from '../utils/tmdb'
 import { useRoute } from 'vue-router';
     

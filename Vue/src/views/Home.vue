@@ -7,7 +7,6 @@ const popularpeople = ref([])
 const popularseries = ref([])
 onMounted(async()=>{
     const popularmoviesdata = await  getPopularMovies()
-    console.log(popularmoviesdata);
     popularmovies.value = popularmoviesdata
     const popularpeopledata = await getPopularPeople()
     popularpeople.value = popularpeopledata

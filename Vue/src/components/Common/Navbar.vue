@@ -1,5 +1,5 @@
 <script setup>
-import { onUpdated, ref } from 'vue';
+import { onMounted, onUpdated, ref, watch } from 'vue';
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 
 
@@ -7,21 +7,26 @@ import { RouterLink, useRoute, useRouter } from 'vue-router';
   const category = ref("DEFAULT");
   const router = useRouter()
   const route = useRoute()
-  const queryParams = new URLSearchParams(location.search);
+  
+    
+
+
+
+  watch(route,()=>{
+    const queryParams = new URLSearchParams(location.search);
   const categoryparam = queryParams.get('category');
   const textparam = queryParams.get('val');
-    
-
-
-
-  
-  onUpdated(()=>{
-    
     if (route.path =='/search') {
+
       search.value = textparam
       category.value =categoryparam
+      
+    }else{
+      search.value = ""
+      category.value = "DEFAULT"
     }
   })
+  
 
 
   const searchevent = (e)=>{
