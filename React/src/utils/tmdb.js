@@ -12,7 +12,8 @@ export const getPopularMovies = async () => {
 export const getPopularPeople = async () => {
   try {
     const response = await fetch(`${baseUrl}/person/popular`);
-    return response
+    const data = await response.json()
+    return data
   } catch (error) {
     throw error;
   }
@@ -21,7 +22,8 @@ export const getPopularPeople = async () => {
 export const getPopularSeries = async () => {
     try {
       const response = await fetch(`${baseUrl}/series/popular`);
-      return response
+      const data = await response.json()
+      return data
     } catch (error) {
       throw error;
     }
