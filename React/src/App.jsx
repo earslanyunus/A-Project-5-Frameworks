@@ -10,6 +10,7 @@ const App = () => {
   const [popularSeries, setPopularSeries] = useState([]);
   useEffect(() => {
     getPopularMovies().then((data) => {
+      console.log(data);
       setPopularMovies(data);
     });
     getPopularPeople().then((data) => {
