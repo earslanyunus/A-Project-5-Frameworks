@@ -1,13 +1,8 @@
-const baseUrl = 'https://api.themoviedb.org/3/'
+const baseUrl = 'https://aproject-api.onrender.com'
 export const getPopularMovies = async () => {
   try {
-    const response = await fetch(
-      `${baseUrl}movie/popular?api_key=${
-        import.meta.env.VITE_MOVIEDB_API_KEY
-      }`
-    );
-    const data = await response.json();
-    return data.results;
+    const response = await fetch(`${baseUrl}/movies/popular`);
+    return response.results;
   } catch (error) {
     throw error;
   }
@@ -15,13 +10,8 @@ export const getPopularMovies = async () => {
 
 export const getPopularPeople = async () => {
   try {
-    const response = await fetch(
-      `${baseUrl}person/popular?api_key=${
-        import.meta.env.VITE_MOVIEDB_API_KEY
-      }`
-    );
-    const data = await response.json();
-    return data.results
+    const response = await fetch(`${baseUrl}person/popular`);
+    return response
   } catch (error) {
     throw error;
   }
@@ -29,13 +19,8 @@ export const getPopularPeople = async () => {
 
 export const getPopularSeries = async () => {
     try {
-      const response = await fetch(
-        `${baseUrl}tv/top_rated?api_key=${
-          import.meta.env.VITE_MOVIEDB_API_KEY
-        }`
-      );
-      const data = await response.json();
-      return data.results
+      const response = await fetch(`${baseUrl}series/popular`);
+      return response
     } catch (error) {
       throw error;
     }
