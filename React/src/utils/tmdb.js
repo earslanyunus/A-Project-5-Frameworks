@@ -2,7 +2,7 @@ const baseUrl = 'https://aproject-api.onrender.com'
 export const getPopularMovies = async () => {
   try {
     const response = await fetch(`${baseUrl}/movies/popular`);
-    return response.results;
+    return response;
   } catch (error) {
     throw error;
   }
