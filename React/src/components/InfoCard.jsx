@@ -12,7 +12,7 @@ export const InfoCard = () => {
     useEffect(()=>{
      getSearchResult(text,category)
      .then(elm=>{
-        setSearchResult(elm.results)
+        setSearchResult(elm)
      })
 
     },[])
