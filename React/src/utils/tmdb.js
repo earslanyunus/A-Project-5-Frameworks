@@ -134,7 +134,7 @@ export const getSeriesSimilar = async (id) => {
 }
 export const getSearchResult = async(text,category)=>{
   try{
-    const response  = await fetch(`${baseUrl}/search?category=${category}&query=${text}`)
+    const response  = await fetch(`${baseUrl}/search?category=${category}&text=${text}`)
     const data = await response.json()
     return data
   }
