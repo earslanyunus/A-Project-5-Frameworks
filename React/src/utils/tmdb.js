@@ -42,7 +42,7 @@ export const getMovieDetails = async (id) => {
 }
 export const getMovieCredits = async (movieid)=>{
   try {
-    const response = await  fetch(`${baseUrl}/movies/credits?id=${movieid}`)
+    const response = await  fetch(`${baseUrl}/movies/detail/credits?id=${movieid}`)
     const data = await response.json()
     return data
   }
