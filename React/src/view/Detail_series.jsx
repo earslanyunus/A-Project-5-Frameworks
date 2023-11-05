@@ -66,10 +66,10 @@ const Detail_series = () => {
 
 
     return (
-        <main className={'container'}>
-        <div className="flex mt-4 mb-4">
-            <img className={'w-1/5 rounded '} src={imagePath + seriesDetail?.poster_path} alt="" />
-            <div className="ms-12">
+        <main className={'container mt-8'}>
+        <div className="flex flex-col lg:flex-row mt-4 mb-4">
+            <img className={'w-full max-w-md  lg:w-1/3  rounded self-center  '} src={imagePath + seriesDetail?.poster_path} alt="" />
+            <div className="lg:ms-12 mt-8 lg:mt-0 w-full">
                 <p className="text-5xl ">{seriesDetail.name}</p>
                  <div className="badge badge-outline badge-sm me-3">{seriesDetail.status}</div>
                  <div className="badge badge-outline badge-sm">Last live on  {new Date(seriesDetail.last_air_date).toLocaleDateString('tr')}</div>
@@ -78,13 +78,13 @@ const Detail_series = () => {
                     return <a key={elm.id} href=""><div className="badge badge-neutral me-2">{elm.name}</div></a>
                 })} 
                 <br />
-                <div className="stats shadow mt-8">
+                <div className="stats stats-vertical lg:stats-horizontal    shadow mt-8  w-full ">
 
-                    <div className="stat place-items-center ">
+                    <div className="stat place-items-center mx-auto ">
                         <div className="stat-title">Number Of Seasons</div>
                         {loading?<p>Loading</p>:<div className="stat-value">{seriesDetail.number_of_seasons}</div>}
                     </div>
-                    <div className="stat place-items-center">
+                    <div className="stat place-items-center mx-auto">
                         <div className="stat-title">Number Of Episodes</div>
                         {loading?<p>Loading</p>:<div className="stat-value">{seriesDetail.number_of_episodes}</div>}
                     </div>

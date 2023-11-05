@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     container:{
+      padding:{
+        DEFAULT:'1rem'
+      },
       center:true
     },
     extend: {},

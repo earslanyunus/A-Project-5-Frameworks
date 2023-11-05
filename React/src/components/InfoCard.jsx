@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation} from "react-router-dom";
 import { getSearchResult } from "../utils/tmdb";
+import { useParams } from "react-router-dom";
 
 export const InfoCard = () => {
     const [searchResult,setSearchResult] = useState([])
     const location = useLocation()
-    const queryParams = new URLSearchParams(location.search);
-    const category = queryParams.get('category');
-    const text = queryParams.get('val');
+    const {category,text} = useParams()
+    console.log(category,text);
     
     useEffect(()=>{
      getSearchResult(text,category)
      .then(elm=>{
+        
         setSearchResult(elm)
      })
 

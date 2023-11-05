@@ -17,7 +17,7 @@ const router = createBrowserRouter([
    
   },
   {
-    path:'detail',
+    path:'/detail',
     element: <DetailLayout/>,
     children:[
       {
@@ -25,21 +25,21 @@ const router = createBrowserRouter([
         element: <MoviesPage/>,
       },
       {
-      path:'movie/:id',
+        path:'/detail/movie/:id', // updated path
         element:<Detail_movie/>
       },
       {
-        path:'person/:id',
+        path:'/detail/person/:id', // updated path
         element:<Detail_person/>
       },
       {
-        path:'tv/:id',
+        path:'/detail/tv/:id', // updated path
         element:<Detail_series/>
       }
     ]
   },
   {
-    path:'/search',
+    path:'/search/:category/:text',
     element:<SearchPage/>
   }
 

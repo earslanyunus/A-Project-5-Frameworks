@@ -55,19 +55,19 @@ const Detail_movie = () => {
     const netPrice= (budget,revenue)=>{
         const total = revenue-budget
         if (total>0) {
-            return  <div className="stat-value text-green-300">${Intl.NumberFormat().format(total)}</div>
+            return  <div className="stat-value text-green-300">${Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(total)}</div>
 
         }else{
-            return <div className="stat-value text-red-500">${Intl.NumberFormat().format(total)}</div>
+            return <div className="stat-value text-red-500">${Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(total)}</div>
 
         }
     }
 
     return (
-        <main className={'container'}>
-            <div className="flex mt-4 mb-4">
-                <img className={'w-1/5 rounded '} src={imagePath + movieDetail?.poster_path} alt="" />
-                <div className="ms-12">
+        <main className={'container mt-8'}>
+            <div className="flex flex-col lg:flex-row mt-4 mb-4">
+                <img className={'w-full max-w-md  lg:w-1/3  rounded self-center  '} src={imagePath + movieDetail?.poster_path} alt="" />
+                <div className="lg:ms-12 mt-8 lg:mt-0 w-full">
                     <p className="text-5xl ">{movieDetail.title}</p>
                     <div className="badge badge-outline badge-sm">{movieDetail.status}  {new Date(movieDetail.release_date).toLocaleDateString('tr')}</div>
                     <p className="mt-4 mb-4">{movieDetail?.overview}</p>
@@ -75,17 +75,17 @@ const Detail_movie = () => {
                         return <a key={elm.id} href=""><div className="badge badge-neutral me-2">{elm.name}</div></a>
                     })}
                     <br />
-                    <div className="stats shadow mt-8">
+                    <div className="stats stats-vertical lg:stats-horizontal    shadow mt-8  w-full ">
 
-                        <div className="stat place-items-center ">
+                        <div className="stat  place-items-center  mx-auto">
                             <div className="stat-title">Budget</div>
-                            {loading?<p>Loading</p>:<div className="stat-value">${new Intl.NumberFormat().format(movieDetail.budget)}</div>}
+                            {loading?<p>Loading</p>:<div className="stat-value">${new Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(movieDetail.budget)}</div>}
                         </div>
-                        <div className="stat place-items-center">
+                        <div className="stat  place-items-center  mx-auto">
                             <div className="stat-title">Revenue</div>
-                            {loading?<p>Loading</p>:<div className="stat-value">${new Intl.NumberFormat().format(movieDetail.revenue)}</div>}
+                            {loading?<p>Loading</p>:<div className="stat-value">${new Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(movieDetail.revenue)}</div>}
                         </div>
-                        <div className="stat place-items-center">
+                        <div className="stat  place-items-center mx-auto">
                             <div className="stat-title">Total</div>
                             {loading?<p>Loading</p>:<div className="stat-value">{netPrice(movieDetail.budget,movieDetail.revenue)}</div>}
                         </div>

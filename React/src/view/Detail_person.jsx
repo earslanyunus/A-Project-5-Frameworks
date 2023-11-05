@@ -68,10 +68,10 @@ const Detail_person = () => {
 
 
     return(
-        <main className="container">
-            <div className="flex mt-4 mb-4">
-            <img className={'w-1/5 rounded '} src={imagePath + personDetail.profile_path} alt="" />
-            <div className="ms-12">
+        <main className="container mt-8">
+            <div className="flex flex-col lg:flex-row mt-4 mb-4">
+            <img className={'w-full max-w-xs  lg:w-1/3  rounded self-center    '} src={imagePath + personDetail.profile_path} alt="" />
+            <div className="lg:ms-12 w-full">
                     <p className="text-5xl upp">{personDetail?.name}</p>
                     <div className="badge badge-outline badge-sm">Born on {new Date(personDetail.birthday).toLocaleDateString('tr')}</div>
                     <p className="mt-4 mb-4">{personDetail?.biography}</p>
