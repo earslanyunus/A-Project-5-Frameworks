@@ -1,13 +1,9 @@
-const baseUrl = 'https://api.themoviedb.org/3/'
+const baseUrl = 'https://aproject-api.onrender.com'
 export const getPopularMovies = async () => {
   try {
-    const response = await fetch(
-      `${baseUrl}movie/popular?api_key=${
-        import.meta.env.VITE_MOVIEDB_API_KEY
-      }`
-    );
-    const data = await response.json();
-    return data.results;
+    const response = await fetch(`${baseUrl}/movies/popular`);
+    const data = await response.json()
+    return data
   } catch (error) {
     throw error;
   }
@@ -15,13 +11,9 @@ export const getPopularMovies = async () => {
 
 export const getPopularPeople = async () => {
   try {
-    const response = await fetch(
-      `${baseUrl}person/popular?api_key=${
-        import.meta.env.VITE_MOVIEDB_API_KEY
-      }`
-    );
-    const data = await response.json();
-    return data.results
+    const response = await fetch(`${baseUrl}/person/popular`);
+    const data = await response.json()
+    return data
   } catch (error) {
     throw error;
   }
@@ -29,13 +21,9 @@ export const getPopularPeople = async () => {
 
 export const getPopularSeries = async () => {
     try {
-      const response = await fetch(
-        `${baseUrl}tv/top_rated?api_key=${
-          import.meta.env.VITE_MOVIEDB_API_KEY
-        }`
-      );
-      const data = await response.json();
-      return data.results
+      const response = await fetch(`${baseUrl}/series/popular`);
+      const data = await response.json()
+      return data
     } catch (error) {
       throw error;
     }
@@ -44,7 +32,7 @@ export const getPopularSeries = async () => {
 export const getMovieDetails = async (id) => {
   try{
     const response = await fetch(
-        `${baseUrl}movie/${id}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+        `${baseUrl}/movies/detail?id=${id}`
     )
     const data = await response.json()
     return data
@@ -54,7 +42,7 @@ export const getMovieDetails = async (id) => {
 }
 export const getMovieCredits = async (movieid)=>{
   try {
-    const response = await  fetch(`${baseUrl}movie/${movieid}/credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`)
+    const response = await  fetch(`${baseUrl}/movies/detail/credits?id=${movieid}`)
     const data = await response.json()
     return data
   }
@@ -66,7 +54,7 @@ export const getMovieCredits = async (movieid)=>{
 
 export const getSimilarMovies = async (movieid)=>{
   try{
-    const data = await fetch(`${baseUrl}movie/${movieid}/similar?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`)
+    const data = await fetch(`${baseUrl}/movies/detail/similar?id=${movieid}`)
     const response = await data.json()
     return response
   }
@@ -78,7 +66,7 @@ export const getSimilarMovies = async (movieid)=>{
 export const getPersonDetails = async (id) => {
   try{
     const response = await fetch(
-        `${baseUrl}person/${id}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+        `${baseUrl}/person/detail?id=${id}`
     )
     const data = await response.json()
     return data
@@ -90,7 +78,7 @@ export const getPersonDetails = async (id) => {
 export const getPersonMovies = async (id) => {
   try{
     const response = await fetch(
-        `${baseUrl}person/${id}/movie_credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+        `${baseUrl}/person/detail/movies?id=${id}`
     )
     const data = await response.json()
     return data
@@ -101,7 +89,7 @@ export const getPersonMovies = async (id) => {
 export const getPersonSeries = async (id) => {
   try{
     const response = await fetch(
-        `${baseUrl}person/${id}/tv_credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+        `${baseUrl}/person/detail/tv?id=${id}`
     )
     const data = await response.json()
     return data
@@ -113,7 +101,7 @@ export const getPersonSeries = async (id) => {
 export const getSeriesDetails = async (id) => {
   try{
     const response = await fetch(
-        `${baseUrl}tv/${id}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+        `${baseUrl}/series/detail?id=${id}`
     )
     const data = await response.json()
     return data
@@ -125,7 +113,7 @@ export const getSeriesDetails = async (id) => {
 export const getSeriesCredits = async (id) => {
   try{
     const response = await fetch(
-        `${baseUrl}tv/${id}/credits?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+        `${baseUrl}/series/detail/credits?id=${id}`
     )
     const data = await response.json()
     return data
@@ -136,7 +124,7 @@ export const getSeriesCredits = async (id) => {
 export const getSeriesSimilar = async (id) => {
   try{
     const response = await fetch(
-        `${baseUrl}tv/${id}/similar?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}`
+        `${baseUrl}/series/detail/similar?id=${id}`
     )
     const data = await response.json()
     return data
@@ -146,7 +134,7 @@ export const getSeriesSimilar = async (id) => {
 }
 export const getSearchResult = async(text,category)=>{
   try{
-    const response  = await fetch(`${baseUrl}search/${category}?api_key=${import.meta.env.VITE_MOVIEDB_API_KEY}&query=${text}`)
+    const response  = await fetch(`${baseUrl}/search?category=${category}&text=${text}`)
     const data = await response.json()
     return data
   }
