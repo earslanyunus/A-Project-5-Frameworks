@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import {getPopularMovies,getPopularPeople,getPopularSeries} from '../utils/tmdb'
-import Swiperpart from '../components/swiperpart.vue';
+import Swiperpart from '../components/swiperPart.vue';
 const popularmovies = ref([])
 const popularpeople = ref([])
 const popularseries = ref([])
