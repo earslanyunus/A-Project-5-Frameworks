@@ -3,6 +3,8 @@
     import { onMounted, ref, watch } from 'vue';
     import {getMovieDetails,getMovieCredits,getSimilarMovies} from '../utils/tmdb'
 import { useRoute } from 'vue-router';
+import Swiperpart from "../components/SwiperPart.vue";
+
     
     const imagePath = 'https://image.tmdb.org/t/p/original';
     const movieDetail = ref([]);
