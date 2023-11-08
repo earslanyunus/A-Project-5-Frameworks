@@ -1,5 +1,5 @@
 <script setup>
-  import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+  import {  Pagination } from "swiper/modules";
   import { register } from 'swiper/element/bundle';
   import "swiper/css";
 import { ref, watchEffect } from "vue";
@@ -21,9 +21,10 @@ import { RouterLink } from "vue-router";
 </script>
 <template>
 <swiper-container
+  modules={[Pagination]}
   class="container mx-auto"
-  space-between='48'
-  slides-per-view='5'
+  space-between='24'
+  slides-per-view='auto'
 >
 
   <swiper-slide class="h-full pb-4" v-for="movie in movies">
