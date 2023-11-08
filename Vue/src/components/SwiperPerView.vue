@@ -21,7 +21,7 @@ import { RouterLink } from "vue-router";
 </script>
 <template>
 <swiper-container
-  modules={[Pagination]}
+pagination="true"
   class="container mx-auto pb-20"
   space-between='24'
   slides-per-view='auto'

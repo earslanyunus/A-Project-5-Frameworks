@@ -15,7 +15,9 @@ onMounted(async()=>{
 })
 </script>
 <template>
+    <div class="mt-8">
     <Swiperpart head="Popular Movies" :movies="popularmovies"/>
     <Swiperpart head="Popular Actors" :movies="popularpeople"/>
     <Swiperpart head="Popular Series" :movies="popularseries"/>
+    </div>
 </template>

@@ -60,14 +60,11 @@ import Swiperpart from "../components/SwiperPart.vue";
     })
     const netPrice= (budget,revenue)=>{
         const total = revenue-budget
-        return Intl.NumberFormat().format(total)
-        
+        const formattedtotal =  Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(total)
+        return formattedtotal        
 
     }
-    const unformatPrice = (budget,revenue)=> {
-      let cleanString = netPrice(budget,revenue).replace(/[\s,]+/g, '');
-      return Number(cleanString);
-}
+
     onMounted(async()=>{
       const moviedata = await getMovieDetails(id)
       movieDetail.value =  moviedata
@@ -115,10 +112,10 @@ import Swiperpart from "../components/SwiperPart.vue";
     
   </script>
   <template>
-  <main class="container">
-    <div class="flex mt-4 mb-4">
-      <img class="w-1/5 rounded" :src="imagePath + movieDetail?.poster_path" alt="" />
-      <div class="ms-12">
+  <main class="container mt-8">
+    <div class="flex flex-col lg:flex-row mt-4 mb-4">
+      <img class="w-full max-w-md  lg:w-1/3  rounded self-center " :src="imagePath + movieDetail?.poster_path" alt="" />
+      <div class="lg:ms-12 mt-8 lg:mt-0 w-full">
         <p class="text-5xl ">{{movieDetail.title}}</p>
         <div class="badge badge-outline badge-sm">{{movieDetail.status}} {{new Date(movieDetail.release_date).toLocaleDateString('tr')}}</div>
         <p class="mt-4 mb-4">{{movieDetail?.overview}}</p>
@@ -128,21 +125,21 @@ import Swiperpart from "../components/SwiperPart.vue";
           </a>
         
         <br />
-        <div class="stats shadow mt-8">
-          <div class="stat place-items-center ">
+        <div class="stats stats-vertical lg:stats-horizontal    shadow mt-8  w-full ">
+          <div class="stat place-items-center mx-auto ">
             <div class="stat-title">Budget</div>
         
-              <div class="stat-value">{{new Intl.NumberFormat().format(movieDetail.budget)}}</div>
+              <div class="stat-value">{{new Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(movieDetail.budget)}}</div>
           </div>
-          <div class="stat place-items-center">
+          <div class="stat place-items-center mx-auto">
             <div class="stat-title">Revenue</div>
             
-              <div class="stat-value">{{new Intl.NumberFormat().format(movieDetail.revenue)}}</div>
+              <div class="stat-value">{{new Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(movieDetail.revenue)}}</div>
           </div>
-          <div class="stat place-items-center">
+          <div class="stat place-items-center mx-auto">
             <div class="stat-title">Total</div>
            
-              <div class="stat-value"><div class="stat-value " :class="unformatPrice(movieDetail.budget,movieDetail.revenue) > 0 ? 'text-green-300':'text-red-500'">{{ netPrice(movieDetail.budget,movieDetail.revenue) }}</div></div>
+              <div class="stat-value"><div class="stat-value "  :class="(movieDetail.revenue-movieDetail.budget) > 0 ? 'text-green-300':'text-red-500'">{{ netPrice(movieDetail.budget,movieDetail.revenue) }}</div></div>
           </div>
         </div>
       </div>
