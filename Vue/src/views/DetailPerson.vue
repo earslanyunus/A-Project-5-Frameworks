@@ -123,14 +123,14 @@ import SwiperPart from "../components/SwiperPart.vue";
 </script>
 
 <template>
-<main class="container">
-    <div class="flex mt-4 mb-4">
+<main class="container mt-8">
+    <div class="flex flex-col lg:flex-row mt-4 mb-4">
         <img
-            class="w-1/5 rounded "
+            class="w-full max-w-xs  lg:w-1/3  rounded self-center   "
             :src="imagePath + personDetail.profile_path"
             alt=""
         />
-        <div class="ms-12">
+        <div class="w-full lg:ms-12">
             <p class="text-5xl upp">{{personDetail?.name}}</p>
             <div class="badge badge-outline badge-sm">
                 Born on {{new Date(personDetail.birthday).toLocaleDateString( "tr" ) }}

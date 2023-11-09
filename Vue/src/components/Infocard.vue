@@ -16,11 +16,11 @@ import { RouterLink, useRoute } from "vue-router";
      category = queryParams.get('category');
      searchvalue = queryParams.get('val');
     const searchresultdata = await getSearchResult(searchvalue,category)
-    searchresult.value = searchresultdata.results
+    searchresult.value = searchresultdata
    })
    onMounted(async()=>{
     const searchresultdata = await getSearchResult(searchvalue,category)
-    searchresult.value = searchresultdata.results
+    searchresult.value = searchresultdata
    })
 </script>
 

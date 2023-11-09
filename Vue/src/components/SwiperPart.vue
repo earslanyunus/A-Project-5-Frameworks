@@ -3,7 +3,7 @@
   const props = defineProps(['movies','head'])
 </script>
 <template>
-<p class="container mx-auto text-3xl font-bold mb-4">
+<p class="container mx-auto text-3xl font-bold mb-4 pl-5">
   {{props.head}}
 </p>
 <SwiperPerView :movies='props.movies' />

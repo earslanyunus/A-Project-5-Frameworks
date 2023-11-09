@@ -107,10 +107,10 @@ const imagePath = 'https://image.tmdb.org/t/p/original'
 </script>
 
         <template>
-        <main class='container'>
-        <div class="flex mt-4 mb-4">
-            <img class='w-1/5 rounded ' :src="imagePath + seriesDetail?.poster_path" alt="" />
-            <div class="ms-12">
+        <main class='container mt-8'>
+        <div class="flex flex-col lg:flex-row mt-4 mb-4">
+            <img class='w-full max-w-md  lg:w-1/3  rounded self-center' :src="imagePath + seriesDetail?.poster_path" alt="" />
+            <div class="lg:ms-12 mt-8 lg:mt-0 w-full">
                 <p class="text-5xl ">{{seriesDetail?.name}}</p>
                  <div class="badge badge-outline badge-sm me-3">{{seriesDetail?.status}}</div>
                  <div class="badge badge-outline badge-sm">Last live on  {{new Date(seriesDetail?.last_air_date).toLocaleDateString('tr')}}</div>
@@ -122,15 +122,15 @@ const imagePath = 'https://image.tmdb.org/t/p/original'
                
                 
                 <br />
-                <div class="stats shadow mt-8">
+                <div class="stats stats-vertical lg:stats-horizontal    shadow mt-8  w-full">
 
-                    <div class="stat place-items-center ">
+                    <div class="stat place-items-center mx-auto ">
                         <div class="stat-title">Number Of Seasons</div>
                      
                         <div class="stat-value">{{seriesDetail?.number_of_seasons}}</div>
                         
                     </div>
-                    <div class="stat place-items-center">
+                    <div class="stat place-items-center mx-auto">
                         <div class="stat-title">Number Of Episodes</div>
                             <div class="stat-value">{{seriesDetail?.number_of_episodes}}</div>
                         

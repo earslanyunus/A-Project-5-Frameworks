@@ -22,12 +22,12 @@ import { RouterLink } from "vue-router";
 <template>
 <swiper-container
 pagination="true"
-  class="container mx-auto pb-20"
+  class="container mx-auto "
   space-between='24'
   slides-per-view='auto'
 >
 
-  <swiper-slide class="max-w-[200px]" v-for="movie in movies">
+  <swiper-slide class="max-w-[200px] pb-20" v-for="movie in movies">
     <RouterLink :to='controlTypeofData(movie)'>
       <div class="card w-full bg-base-100 shadow-xl">
         <figure>
