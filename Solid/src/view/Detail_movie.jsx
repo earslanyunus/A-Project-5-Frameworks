@@ -60,13 +60,13 @@ const Detail_movie = () => {
 
     return (
 
-        <main className={'container '}>
+        <main className={'container mt-8'}>
             {movieDetail.loading && <span className="container mx-auto loading loading-spinner loading-lg"></span>}
             {movieDetail.error && <div>{movieDetail.error.message}</div>}
             {movieDetail() && (
-                <div className="flex mt-4 mb-4">
-                    <img className={'w-1/5 rounded '} src={imagePath + movieDetail()?.poster_path} alt="" />
-                    <div className="ms-12">
+                <div className="flex flex-col lg:flex-row mt-4 mb-4">
+                    <img className={'w-full max-w-md  lg:w-1/3  rounded self-center '} src={imagePath + movieDetail()?.poster_path} alt="" />
+                    <div className="lg:ms-12 mt-8 lg:mt-0 w-full">
                         <p className="text-5xl ">{movieDetail()?.title}</p>
                         <div className="badge badge-outline badge-sm">{movieDetail()?.status}  {new Date(movieDetail()?.release_date).toLocaleDateString('tr')}</div>
                         <p className="mt-4 mb-4">{movieDetail()?.overview}</p>
@@ -74,17 +74,17 @@ const Detail_movie = () => {
                             return <a key={elm.id} href=""><div className="badge badge-neutral me-2">{elm.name}</div></a>
                         })}
                         <br />
-                        <div className="stats shadow mt-8">
+                        <div className="stats stats-vertical lg:stats-horizontal    shadow mt-8  w-full">
 
-                            <div className="stat place-items-center ">
+                            <div className="stat place-items-center mx-auto ">
                                 <div className="stat-title">Budget</div>
                                 <div className="stat-value">${new Intl.NumberFormat().format(movieDetail()?.budget)}</div>
                             </div>
-                            <div className="stat place-items-center">
+                            <div className="stat place-items-center mx-auto">
                                 <div className="stat-title">Revenue</div>
                                 <div className="stat-value">${new Intl.NumberFormat().format(movieDetail()?.revenue)}</div>
                             </div>
-                            <div className="stat place-items-center">
+                            <div className="stat place-items-center mx-auto">
                                 <div className="stat-title">Total</div>
                                 <div className="stat-value">{netPrice(movieDetail()?.budget, movieDetail()?.revenue)}</div>
                             </div>

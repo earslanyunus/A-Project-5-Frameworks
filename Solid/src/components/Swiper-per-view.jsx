@@ -1,4 +1,4 @@
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { register } from 'swiper/element/bundle';
 register()
 
@@ -26,20 +26,18 @@ const controlTypeofData = (data)=>{
   return (
     <>
       <swiper-container
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        class="container mx-auto"
+        modules={[Pagination]}
+        class="container mx-auto "
         space-between={24}
-        slides-per-view="5"
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        slides-per-view={'auto'}
       >
         {movies.loading && <span className="container mx-auto loading loading-spinner loading-lg"></span>}
         {movies()&& (
         <For each={movies()}>
           {(movie)=>(
-            <swiper-slide key={movie.id} className="h-full pb-4">
+            <swiper-slide key={movie.id} className="max-w-[200px] pb-20">
             <A href={controlTypeofData(movie)}>
-              <div className="card w-56 bg-base-100  shadow-xl">
+              <div className="card  bg-base-100 w-full   shadow-xl">
                 <figure>
                   <img
                     className="object-contain w-[100%] h-auto"

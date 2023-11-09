@@ -11,7 +11,7 @@ export const InfoCard = () => {
     
     const [searchResult] = createResource(async()=>{
         const data = await getSearchResult(text,category)
-        return data.results
+        return data
 
     })
 
