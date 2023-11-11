@@ -5,7 +5,10 @@ export default {
   ],
   theme: {
     container:{
-      center:true
+      center:true,
+      padding:{
+        DEFAULT:'1rem'
+      }
     },
     extend: {},
   },

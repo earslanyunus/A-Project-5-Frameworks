@@ -1,4 +1,4 @@
-const baseUrl = 'https://aproject-api.onrender.com'
+const baseUrl = 'http://localhost:3000'
 export const getPopularMovies = async () => {
   try {
     const response = await fetch(`${baseUrl}/movies/popular`);

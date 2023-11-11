@@ -12,12 +12,16 @@
     import Footer from "../components/common/Footer.svelte";
     const imagePath = "https://image.tmdb.org/t/p/original";
 
-    const id =location.pathname.split("/")[location.pathname.split("/").length - 1];
+
+    let id
     let personDetail = [];
     let personMovies = [];
     let personSeries = [];
+    
+    export let params = {};
 
-    onMount(async () => {
+    const getdata = async (id) => {
+        
         const persondetaildata = await getPersonDetails(id);
         personDetail = persondetaildata;
 
@@ -68,18 +72,33 @@
             return 0;
         });
         personSeries = personseriesdata;
+    };
+    onMount(async () => {
+        id= params.id
+        
+       getdata(params.id)
+     
     });
+    $: if (params.id) {
+        
+        if (id!== undefined&&id !== params.id) {
+            
+            getdata(params.id);
+            window.scrollTo(0, 0);
+        }
+        
+    }
 </script>
 
 <Navbar />
-<main class="container">
-    <div class="flex mt-4 mb-4">
+<main class="container mt-8">
+    <div class="flex flex-col lg:flex-row mt-4 mb-4">
         <img
-            class={"w-1/5 rounded "}
+            class={"w-full max-w-xs  lg:w-1/3  rounded self-center   "}
             src={imagePath + personDetail.profile_path}
             alt=""
         />
-        <div class="ms-12">
+        <div class="lg:ms-12 w-full">
             <p class="text-5xl upp">{personDetail?.name}</p>
             <div class="badge badge-outline badge-sm">
                 Born on {new Date(personDetail.birthday).toLocaleDateString(

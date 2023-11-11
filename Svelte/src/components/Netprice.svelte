@@ -1,14 +1,11 @@
 <script>
     export let budget
     export let revenue
-    const netPrice= ()=>{
-        return  revenue-budget
-        
-    }
+   
 </script>
-{#if netPrice()>0}
-<div class="stat-value text-green-300">${Intl.NumberFormat().format(netPrice())}</div>
+{#if revenue-budget>0}
+<div class="stat-value text-green-300">${Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(revenue-budget)}</div>
 {:else}
-<div class="stat-value text-red-500">${Intl.NumberFormat().format(netPrice())}</div>
+<div class="stat-value text-red-500">${Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(revenue-budget)}</div>
 {/if}
 

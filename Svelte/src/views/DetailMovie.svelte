@@ -7,19 +7,20 @@
     import Navbar from '../components/common/Navbar.svelte';
     import Footer from '../components/common/Footer.svelte';
     import Netprice from '../components/Netprice.svelte';
-  
+
+
     const imagePath = 'https://image.tmdb.org/t/p/original';
-    let loading = true;
     let movieDetail = [];
     let detailgenres = []
     let movieCrew = [];
     let moviesimilar = [];
-    const id = location.pathname.split('/')[location.pathname.split('/').length-1]
-    onMount( async () => {
+    let id
+    export let params = {}
+ 
+    const getdata = async(id)=>{
       const moviedata = await getMovieDetails(id)
       movieDetail =  moviedata
       detailgenres = moviedata.genres
-      loading = false;
 
      
         
@@ -57,15 +58,29 @@
         return 0;
       });
       moviesimilar = elm2.results;
+    }
+
+    onMount( async () => {
+      id = params.id
+      await getdata(params.id)
+      
     });
+    $: if(params.id){
+      if (id !==undefined &&id !== params.id) {
+        getdata(params.id)
+      window.scrollTo(0, 0);
+      }
+  
+    }
+
   
     
   </script>
   <Navbar/>
-  <main class="container">
-    <div class="flex mt-4 mb-4">
-      <img class="w-1/5 rounded" src="{imagePath + movieDetail?.poster_path}" alt="" />
-      <div class="ms-12">
+  <main class="container mt-8">
+    <div class="flex flex-col lg:flex-row mt-4 mb-4">
+      <img class="w-full max-w-md  lg:w-1/3  rounded self-center" src="{imagePath + movieDetail?.poster_path}" alt="" />
+      <div class="lg:ms-12 mt-8 lg:mt-0 w-full">
         <p class="text-5xl ">{movieDetail.title}</p>
         <div class="badge badge-outline badge-sm">{movieDetail.status} {new Date(movieDetail.release_date).toLocaleDateString('tr')}</div>
         <p class="mt-4 mb-4">{movieDetail?.overview}</p>
@@ -76,30 +91,26 @@
           </a>
         {/each}
         <br />
-        <div class="stats shadow mt-8">
-          <div class="stat place-items-center ">
+        <div class="stats stats-vertical lg:stats-horizontal    shadow mt-8  w-full ">
+          <div class="stat place-items-center mx-auto ">
             <div class="stat-title">Budget</div>
-            {#if loading}
-              <p>Loading</p>
-            {:else}
-              <div class="stat-value">${new Intl.NumberFormat().format(movieDetail.budget)}</div>
-            {/if}
+         
+             
+        
+              <div class="stat-value">${new Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(movieDetail.budget)}</div>
+           
           </div>
-          <div class="stat place-items-center">
+          <div class="stat place-items-center mx-auto">
             <div class="stat-title">Revenue</div>
-            {#if loading}
-              <p>Loading</p>
-            {:else}
-              <div class="stat-value">${new Intl.NumberFormat().format(movieDetail.revenue)}</div>
-            {/if}
+          
+              <div class="stat-value">${new Intl.NumberFormat('en-GB',{notation:'compact',compactDisplay:'short'}).format(movieDetail.revenue)}</div>
+          
           </div>
-          <div class="stat place-items-center">
+          <div class="stat place-items-center mx-auto">
             <div class="stat-title">Total</div>
-            {#if loading}
-              <p>Loading</p>
-            {:else}
+        
               <div class="stat-value"><Netprice revenue={movieDetail.revenue} budget={movieDetail.budget}/></div>
-            {/if}
+           
           </div>
         </div>
       </div>
