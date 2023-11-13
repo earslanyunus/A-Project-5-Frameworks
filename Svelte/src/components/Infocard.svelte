@@ -1,5 +1,4 @@
 <script>
-    import { Link } from "svelte-routing";
     import { getSearchResult } from "../utils/tmdb";
     import { onMount } from "svelte";
     import Navbar from "./common/Navbar.svelte";
@@ -11,11 +10,10 @@
     let searchresult =[]
 
 
-    console.log(category, searchvalue);
 
    onMount(async()=>{
     const searchresultdata = await getSearchResult(searchvalue,category)
-    searchresult= searchresultdata.results
+    searchresult= searchresultdata
    })
 </script>
 

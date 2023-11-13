@@ -1,6 +1,5 @@
 <script>
     import { onMount } from "svelte";
-  import { Link, navigate } from "svelte-routing";
 // @ts-nocheck
 let searchvalue
 let category = "DEFAULT"
@@ -21,19 +20,20 @@ const searchevent = (e)=>{
 
   }
   }
+
 </script>
 
-<div class="navbar bg-base-100 justify-between">
+<div class="container mx-auto navbar bg-base-100 justify-between pt-6 pl-5 pr-5 flex-col md:flex-row">
   <div >
-    <Link to={"/"} class="btn btn-ghost normal-case text-xl">
+    <a href={"/"} class="btn btn-ghost normal-case text-xl">
       A-Project-Svelte
-    </Link>
+    </a>
   </div>
-  <div class="flex-none gap-2">
-    <div class="flex">
+  <div class="flex-none gap-2 mt-6 md:mt-0">
+    <div class="flex flex-col md:flex-row gap-2 md:gap-0">
       <select
       bind:value={category}
-        class="select select-bordered rounded-tr-none rounded-br-none focus:outline-none w-full border-r-0 max-w-xs"
+        class="select select-bordered md:rounded-tr-none md:rounded-br-none focus:outline-none w-full md:border-r-0 max-w-xs"
       >
         <option disabled value={"DEFAULT"}>
           Search Category?
@@ -47,10 +47,10 @@ const searchevent = (e)=>{
           bind:value={searchvalue}
           type="text"
           placeholder="Search"
-          class="focus:outline-none  input input-bordered w-24 md:w-auto  border-r-0 rounded-none  border-l-0"
+          class="focus:outline-none  input input-bordered md:w-24  md:border-r-0 md:rounded-none  md:border-l-0"
         />
       </div>
-    <button on:click={searchevent} class="btn btn-outline dark:border-gray-700 border-gray-300 rounded-bl-none rounded-tl-none border-l-0">Search</button>
+    <button on:click={searchevent} class="btn btn-outline dark:border-gray-700 border-gray-300 md:rounded-bl-none md:rounded-tl-none md:border-l-0">Search</button>
     </div>
     
   </div>

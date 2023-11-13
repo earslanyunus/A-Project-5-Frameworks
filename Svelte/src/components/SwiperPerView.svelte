@@ -1,7 +1,8 @@
 <script>
-  import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+  import { Pagination} from "swiper/modules";
   import { register } from 'swiper/element/bundle';
-  import { Link } from "svelte-routing";
+  import {link} from 'svelte-spa-router'
+
   import "swiper/css";
   register();
 
@@ -9,26 +10,26 @@
   const controlTypeofData = (data) => {
     if (data.poster_path) {
       if (data.first_air_date) {
-        return `detail/tv/${data.id}`;
+        return `#/detail/tv/${data.id}`;
       } else {
-        return `detail/movie/${data.id}`;
+        return `#/detail/movie/${data.id}`;
       }
     } else {
-      return `detail/person/${data.id}`;
+      return `#/detail/person/${data.id}`;
     }
   };
 </script>
 
 <swiper-container
-  modules={[Navigation, Pagination, Scrollbar, A11y]}
-  class="container mx-auto"
-  space-between={48}
-  slides-per-view={5}
+  pagination = 'true'
+  class="container mx-auto pl-5"
+  space-between='24'
+  slides-per-view='auto'
 >
 {#each movies as movie}
-  <swiper-slide class="h-full pb-4">
-    <Link to={controlTypeofData(movie)}>
-      <div class="card w-56 bg-base-100 shadow-xl">
+  <swiper-slide class="max-w-[200px] pb-20">
+    <a  href={controlTypeofData(movie)} >
+      <div class="card w-full bg-base-100 shadow-xl">
         <figure>
           <img
             class="object-contain w-[100%] h-auto"
@@ -43,7 +44,7 @@
           <p class="card-title whitespace-nowrap text-ellipsis overflow-hidden block">{movie.title || movie.name}</p>
         </div>
       </div>
-    </Link>
+    </a>
   </swiper-slide>
 {/each}
 </swiper-container>

@@ -4,13 +4,23 @@
   import DetailSeries from "./views/DetailSeries.svelte";
   import SearchPage from "./views/SearchPage.svelte";
   import Home from "./views/Home.svelte";
-  import { Router, Route } from "svelte-routing";
+  import Router from 'svelte-spa-router'
+
+  const routes = {
+    
+    '/': Home,
+    '/detail/movie/:id': DetailMovie,
+    '/detail/person/:id': DetailPerson,
+    '/detail/tv/:id': DetailSeries,
+
+    '/search/*': SearchPage
+}
 </script>
 
-<Router>
-  <Route path="/"><Home /></Route>
-  <Route path="/detail/movie/:id"><DetailMovie /></Route>
-  <Route path="/detail/person/:id"><DetailPerson /></Route>
-  <Route path="/detail/tv/:id"><DetailSeries /></Route>
-  <Route path="/search"><SearchPage /></Route>
-</Router>
+
+
+<body>
+  <Router {routes}/>
+     
+</body>
+
