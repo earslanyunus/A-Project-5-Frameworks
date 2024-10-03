@@ -1,4 +1,4 @@
-const baseUrl = import.meta.env.VITE_API_URL
+const baseUrl = "https://aprojectapi.earslanyunus.com"
 export const getPopularMovies = async () => {
   try {
     const response = await fetch(`${baseUrl}/movies/popular`);
