@@ -1,4 +1,4 @@
-const baseUrl = "https://aproject-api.onrender.com"
+const baseUrl = "https://aprojectapi.earslanyunus.com"
 export const getPopularMovies = async () => {
   try {
     const response = await fetch(`${baseUrl}/movies/popular`);
