@@ -1,0 +1,21 @@
+{
+  "name": "a-project-5-frameworks",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for 5 frameworks project (React, Vue, Svelte, Solid)",
+  "scripts": {
+    "build:react": "cd React && npm install && npm run build",
+    "build:vue": "cd Vue && npm install && npm run build",
+    "build:svelte": "cd Svelte && npm install && npm run build",
+    "build:solid": "cd Solid && npm install && npm run build",
+    "build": "npm run build:react && npm run build:vue && npm run build:svelte && npm run build:solid"  
+  },
+  "workspaces": [
+    "React",
+    "Vue",
+    "Svelte",
+    "Solid"
+  ],
+  "author": "Yunus",
+  "license": "MIT"
+}

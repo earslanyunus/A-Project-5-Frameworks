@@ -1,0 +1,17 @@
+{
+  "name": "aprojectvue",
+  "build": {
+    "command": "npm install && npm run build",
+    "output_directory": "dist",
+    "root_directory": "Vue"
+  },
+  "deployment": {
+    "routes": [
+      {
+        "pattern": "/*",
+        "zone_name": "earslanyunus.com",
+        "custom_domain": "aprojectvue.earslanyunus.com"
+      }
+    ]
+  }
+}

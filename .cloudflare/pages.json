@@ -1,0 +1,33 @@
+{
+  "build": {
+    "command": "npm run build",
+    "output_directory": "public"
+  },
+  "routes": [
+    {
+      "pattern": "/react/*",
+      "path": "/React/dist/:splat",
+      "status": 200
+    },
+    {
+      "pattern": "/vue/*",
+      "path": "/Vue/dist/:splat",
+      "status": 200
+    },
+    {
+      "pattern": "/svelte/*",
+      "path": "/Svelte/dist/:splat",
+      "status": 200
+    },
+    {
+      "pattern": "/solid/*",
+      "path": "/Solid/dist/:splat",
+      "status": 200
+    },
+    {
+      "pattern": "/*",
+      "path": "/index.html",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "aprojectsvelte",
+  "build": {
+    "command": "npm install && npm run build",
+    "output_directory": "dist",
+    "root_directory": "Svelte"
+  },
+  "deployment": {
+    "routes": [
+      {
+        "pattern": "/*",
+        "zone_name": "earslanyunus.com",
+        "custom_domain": "aprojectsvelte.earslanyunus.com"
+      }
+    ]
+  }
+}
